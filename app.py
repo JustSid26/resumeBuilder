@@ -3,7 +3,6 @@ app = Flask(__name__)
 
 about = 'This is a simple portfolio builder in which it will create a portfolio for you based on your inputs. The portfolio is also downloadable as a pdf. Try it, because it is free and convenient.'
 
-
 @app.route("/")
 def index():
     return render_template("index.html", about=about)
