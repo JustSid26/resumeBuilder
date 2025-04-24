@@ -15,5 +15,12 @@ def portfolio_maker():
 def login_page():
     return render_template("login.html")
 
+@app.route("/contact")
+def contatc_info():
+    return render_template("contact.html")
+
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='10000', debug=True)

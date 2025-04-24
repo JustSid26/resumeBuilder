@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(234, 234, 234);" id = 'navbar'>
   <div class="container-fluid">
     <a class="navbar-brand" href="/">PortfolioEx</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,11 +14,12 @@
           Dropdown button
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item btn-outline-dark" href="#">Action</a></li>
-          <li><a class="dropdown-item btn-outline-dark" href="#">Another action</a></li>
-          <li><a class="dropdown-item btn-outline-dark" href="#">Something else here</a></li>
+          <li><a class="dropdown-item btn-outline-dark" href="/login">Login</a></li>
+          <li><a class="dropdown-item btn-outline-dark" href="/contact">Contact Us</a></li>
+          <li><a class="dropdown-item btn-outline-dark" href="/donate">Donate</a></li>
         </ul>
       </div>
+      
     </div>
     <span class="navbar-text">
       Try it, it's free! <a href="/login">
@@ -25,4 +27,20 @@
       </a>
     </span>
   </div>
+
+  <div>
+    <button class="btn btn-outline-dark mt-2 mb-2" onclick="toggleDarkMode()">🌙</button>
+  </div>
+  <script>
+    function toggleDarkMode() {
+      const body = document.getElementById('pageBody');
+        const isDark = body.classList.contains('bg-dark');
+        body.classList.toggle('bg-dark', !isDark);
+        body.classList.toggle('text-light', !isDark);
+        body.classList.toggle('bg-light', isDark);
+        body.classList.toggle('text-dark', isDark);
+        }
+  </script>
 </nav>
+
+
