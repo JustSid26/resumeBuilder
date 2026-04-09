@@ -7,7 +7,7 @@ class DatabaseHandler:
             self.connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="damyanti26",
+                password="",
                 database="ResumeBuilder"
             )
             self.cursor = self.connection.cursor()
