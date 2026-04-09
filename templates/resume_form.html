@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Builder | Create</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #764ba2;
+            --secondary-color: #667eea;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .section-header i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        .form-control {
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(118, 75, 162, 0.25);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 2rem;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-input {
+            position: relative;
+        }
+        
+        .social-input i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+        
+        .social-input input {
+            padding-left: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem auto;
+            }
+            
+            .section-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-file-alt me-3"></i>Create Your Resume</h1>
+            <p class="text-white-50">Fill in your details to generate a professional resume</p>
+        </div>
+
+        <form action="/generate_resume" method="post">
+            <!-- Personal Information -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-user"></i>
+                    <h2>Personal Information</h2>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Occupation/Title</label>
+                        <input type="text" class="form-control" name="occupation" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-control" name="phone" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Location</label>
+                        <input type="text" class="form-control" name="location" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-link"></i>
+                    <h2>Social Links</h2>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">LinkedIn URL</label>
+                        <div class="social-input">
+                            <i class="fab fa-linkedin"></i>
+                            <input type="text" class="form-control" name="linkedin">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">GitHub URL</label>
+                        <div class="social-input">
+                            <i class="fab fa-github"></i>
+                            <input type="text" class="form-control" name="github">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-briefcase"></i>
+                    <h2>Professional Experience</h2>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="experience" 
+                              placeholder="Enter keywords or brief points about your work experience"></textarea>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h2>Education</h2>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="education" 
+                              placeholder="Enter keywords or brief points about your education"></textarea>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-project-diagram"></i>
+                    <h2>Projects</h2>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="projects" 
+                              placeholder="Enter keywords or brief points about your projects"></textarea>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-tools"></i>
+                    <h2>Skills</h2>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="skills" 
+                              placeholder="Enter your skills (comma-separated)"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-submit">
+                <i class="fas fa-file-download me-2"></i>Generate Resume
+            </button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
