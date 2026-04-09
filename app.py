@@ -4,7 +4,10 @@ import re
 from resumepdf import ResumePDF
 from abc import ABC, abstractmethod
 from db import DatabaseHandler
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 class AIModelInterface(ABC):
     """Abstract base class for AI model interactions"""
     @abstractmethod
@@ -109,9 +112,13 @@ class FlaskAppWrapper:
         self.__about = 'This is a simple portfolio/resume builder in which it will create a portfolio/resume for you based on your inputs. The portfolio/resume is also downloadable as a pdf. Try it, because it is free and convenient.'
         
         #initializing components
-        self.__ai_model = GeminiModel('AIzaSyB7wpSttriNohLnN7XzMWFk2zgcbdX93YE')
+        self.__ai_model = GeminiModel(os.getenv("GEMINI_API_KEY"))
         self.__resume_builder = ResumeBuilder(self.__ai_model)
-        self.__auth = Authentication('admin', 'damyanti26')
+
+        self.__auth = Authentication(
+        os.getenv("ADMIN_USERNAME"),
+        os.getenv("ADMIN_PASSWORD")
+)
         self.__register_routes()
     
     @property
